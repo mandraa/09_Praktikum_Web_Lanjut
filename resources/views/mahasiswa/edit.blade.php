@@ -35,10 +35,9 @@
                         </div>
                         <div class="form-group">
                             <label for="kelas">Kelas</label>
-                            <input type="kelas" name="kelas" class="formcontrol" id="kelas" value="{{ $Mahasiswa->Kelas }}" ariadescribedby="Kelas">
-                            <select name="kelas" class="from-control">
+                            <select name="kelas_id" class="from-control">
                                 @foreach ($kelas as $kls)
-                                    <option value="{{$kls->id}}" {{$Mahasiswa->kelas_id -- $kls >id ? 'selected' : ''}}>{{$kls >nama_kelas}}</option>
+                                    <option value="{{$kls->id}}" {{$Mahasiswa->kelas_id == $kls->id ? 'selected' : ''}}>{{$kls->nama_kelas}}</option>
                                 @endforeach
                             </select>
                         </div>

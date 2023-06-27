@@ -107,7 +107,7 @@ class MahasiswaController extends Controller
             'Email' => 'required',
             'Tanggal_Lahir' => 'required',
         ]);
-        $Mahasiswa = new Mahasiswa;
+        $Mahasiswa = Mahasiswa::with('kelas')->where('nim', $Nim)->first();
         $Mahasiswa->nim = $request->get('Nim');
         $Mahasiswa->nama = $request->get('Nama');
         $Mahasiswa->jurusan = $request->get('Jurusan');
@@ -117,7 +117,7 @@ class MahasiswaController extends Controller
         $Mahasiswa->save();
 
         $kelas = new Kelas;
-        $kelas->id = $request->get('Kelas');
+        $kelas->id = $request->get('kelas_id');
 
         //fungsi eloquent untuk mengupdate data dengan relasi belongsTo
         //Mahasiswa::find($Nim)->update($request->all());
